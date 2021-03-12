@@ -81,7 +81,7 @@ public class HibernateUtils {
 		return entity;
 	}
 	
-	public <T> T updateEntity(T entity)	{
+	public <T> T saveOrUpdateEntity(T entity)	{
 		Transaction txn = null;
 		Session session = null;
 		try	{
@@ -140,6 +140,9 @@ public class HibernateUtils {
 		}
 		catch(Exception e)	{
 			logger.error(" <<<<<<<<<<<<<<<<<<<<<<< SystemException occurred at findEntityByPrimaryId {}",e);
+		}
+		finally	{
+			closeSession();
 		}
 		return entity;
 	}

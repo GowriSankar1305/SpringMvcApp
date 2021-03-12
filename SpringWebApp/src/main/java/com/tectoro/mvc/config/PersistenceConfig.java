@@ -32,7 +32,8 @@ public class PersistenceConfig {
 	private String showSql;
 	@Value("${hibernate.hbm2ddl.auto}")
 	private String ddlAuto;
-	
+	@Value("${packages.to.scan}")
+	private String packagesToScan;
 	@Bean
 	public DataSource getDataSource()	{
 		BasicDataSource dataSource = new BasicDataSource();
@@ -52,6 +53,7 @@ public class PersistenceConfig {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(getDataSource());
 		sessionFactory.setHibernateProperties(props);
+		sessionFactory.setPackagesToScan(packagesToScan);
 		return sessionFactory;
 	}
 	

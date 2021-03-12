@@ -13,64 +13,47 @@ import javax.persistence.Table;
 
 import com.tectoro.mvc.utils.GenderEnum;
 
-
 @Entity
-@Table(name = "tbl_customer")
-public class Customer {
+@Table(name = "tbl_admin")
+public class Admin {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "customer_id")
-	private Long customerId;
+	@Column(name = "admin_id")
+	private Long adminId;
 	@Column(name = "first_name")
 	private String firstName;
 	@Column(name = "last_name")
 	private String lastName;
-	@Column(name = "mobile_number",nullable = false,unique = true)
+	@Column(name = "mobile_number")
 	private String mobileNumber;
-	@Column(name = "email_id",nullable = false,unique = true)
+	@Column(name = "email_id")
 	private String emailId;
-	@Column(name = "address")
-	private String address;
+	@Column(name = "date_of_birth")
+	private Date dateOfBirth;
 	@Column(name = "gender")
 	@Enumerated(EnumType.STRING)
 	private GenderEnum gender;
+	@Column(name = "address")
+	private String address;
+	@Column(name = "age")
+	private Integer age;
+	@Column(name = "user_name")
+	private String userName;
+	@Column(name = "password")
+	private String password;
+	@Column(name = "is_active_user")
+	private Byte isActiveUser;
 	@Column(name = "created_date")
 	private Long createdDate;
 	@Column(name = "modified_date")
 	private Long modifiedDate;
-	@Column(name = "date_of_birth")
-	private Date dateOfBirth;
-	@Column(name = "age")
-	private Integer age;
-	@Column(name = "user_name",unique = true,nullable = false)
-	private String userName;
-	@Column(name = "password",nullable = false)
-	private String password;
-	@Column(name = "is_active_user")
-	private Byte isActiveUser;
-	@Column(name = "is_created_from_admin_journey")
-	private Byte iscreatedFromAdminJourney;
-	@Column(name = "is_created_from_customer_journey")
-	private Byte iscreatedFromCustomerJourney;
 	
-	public Byte getIscreatedFromAdminJourney() {
-		return iscreatedFromAdminJourney;
+	public Long getAdminId() {
+		return adminId;
 	}
-	public void setIscreatedFromAdminJourney(Byte iscreatedFromAdminJourney) {
-		this.iscreatedFromAdminJourney = iscreatedFromAdminJourney;
-	}
-	public Byte getIscreatedFromCustomerJourney() {
-		return iscreatedFromCustomerJourney;
-	}
-	public void setIscreatedFromCustomerJourney(Byte iscreatedFromCustomerJourney) {
-		this.iscreatedFromCustomerJourney = iscreatedFromCustomerJourney;
-	}
-	public Long getCustomerId() {
-		return customerId;
-	}
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
+	public void setAdminId(Long adminId) {
+		this.adminId = adminId;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -96,11 +79,11 @@ public class Customer {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public String getAddress() {
-		return address;
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 	public GenderEnum getGender() {
 		return gender;
@@ -108,23 +91,11 @@ public class Customer {
 	public void setGender(GenderEnum gender) {
 		this.gender = gender;
 	}
-	public Long getCreatedDate() {
-		return createdDate;
+	public String getAddress() {
+		return address;
 	}
-	public void setCreatedDate(Long createdDate) {
-		this.createdDate = createdDate;
-	}
-	public Long getModifiedDate() {
-		return modifiedDate;
-	}
-	public void setModifiedDate(Long modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public Integer getAge() {
 		return age;
@@ -149,5 +120,17 @@ public class Customer {
 	}
 	public void setIsActiveUser(Byte isActiveUser) {
 		this.isActiveUser = isActiveUser;
+	}
+	public Long getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(Long createdDate) {
+		this.createdDate = createdDate;
+	}
+	public Long getModifiedDate() {
+		return modifiedDate;
+	}
+	public void setModifiedDate(Long modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 }

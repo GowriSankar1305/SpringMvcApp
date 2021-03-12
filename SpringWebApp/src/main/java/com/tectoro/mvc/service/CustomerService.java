@@ -1,5 +1,9 @@
 package com.tectoro.mvc.service;
 
-public interface CustomerService {
+import com.tectoro.mvc.dto.CustomerDto;
 
+public interface CustomerService {
+	public CustomerDto saveCustomer(CustomerDto customerDto);
+	public CustomerDto updateCustomer(CustomerDto customerDto);
+	public CustomerDto getCustomerDtoById(Long customerId);
 }

@@ -2,38 +2,24 @@ package com.tectoro.mvc.dto;
 
 import java.io.Serializable;
 
-public class CustomerDto implements Serializable {
+public class AdminDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Long customerId;
+	private Long adminId;
 	private String firstName;
 	private String lastName;
 	private String mobileNumber;
 	private String emailId;
+	private String dateOfBirth;
 	private String gender;
+	private String address;
 	private Integer age;
 	private String userName;
 	private Byte isActiveUser;
-	private Byte createdByAdmin;
-	private Byte createdByCustomer;
 	private String password;
-	private String address;
 	private Long createdDate;
-	private String dateOfBirth;
 	
-	public String getDateOfBirth() {
-		return dateOfBirth;
-	}
-	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	public Long getCreatedDate() {
 		return createdDate;
 	}
@@ -46,11 +32,11 @@ public class CustomerDto implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Long getCustomerId() {
-		return customerId;
+	public Long getAdminId() {
+		return adminId;
 	}
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
+	public void setAdminId(Long adminId) {
+		this.adminId = adminId;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -76,11 +62,23 @@ public class CustomerDto implements Serializable {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 	public String getGender() {
 		return gender;
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public Integer getAge() {
 		return age;
@@ -100,24 +98,12 @@ public class CustomerDto implements Serializable {
 	public void setIsActiveUser(Byte isActiveUser) {
 		this.isActiveUser = isActiveUser;
 	}
-	public Byte getCreatedByAdmin() {
-		return createdByAdmin;
-	}
-	public void setCreatedByAdmin(Byte createdByAdmin) {
-		this.createdByAdmin = createdByAdmin;
-	}
-	public Byte getCreatedByCustomer() {
-		return createdByCustomer;
-	}
-	public void setCreatedByCustomer(Byte createdByCustomer) {
-		this.createdByCustomer = createdByCustomer;
-	}
 	
 	@Override
 	public String toString() {
-		return "CustomerDto [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", mobileNumber=" + mobileNumber + ", emailId=" + emailId + ", gender=" + gender + ", age=" + age
-				+ ", userName=" + userName + ", isActiveUser=" + isActiveUser + ", createdByAdmin=" + createdByAdmin
-				+ ", createdByCustomer=" + createdByCustomer + "]";
+		return "AdminDto [adminId=" + adminId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", mobileNumber=" + mobileNumber + ", emailId=" + emailId + ", dateOfBirth=" + dateOfBirth
+				+ ", gender=" + gender + ", address=" + address + ", age=" + age + ", userName=" + userName
+				+ ", isActiveUser=" + isActiveUser + "]";
 	}
 }

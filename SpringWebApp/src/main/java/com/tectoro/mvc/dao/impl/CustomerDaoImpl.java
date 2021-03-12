@@ -15,22 +15,18 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Autowired
 	private HibernateUtils hibernateUtils;
 	
-	@Override
 	public Customer saveCustomer(Customer customer) {
 		return hibernateUtils.saveEntity(customer);
 	}
 
-	@Override
 	public Customer updateCustomer(Customer customer) {
-		return hibernateUtils.updateEntity(customer);
+		return hibernateUtils.saveOrUpdateEntity(customer);
 	}
 
-	@Override
 	public List<Customer> getAllCustomers() {
 		return hibernateUtils.loadEntities(Customer.class);
 	}
 
-	@Override
 	public Customer getCustomerById(Long customerId) {
 		return hibernateUtils.findEntityByPrimaryId(Customer.class, customerId);
 	}
