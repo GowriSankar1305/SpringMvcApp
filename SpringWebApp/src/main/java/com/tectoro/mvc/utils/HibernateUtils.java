@@ -146,4 +146,27 @@ public class HibernateUtils {
 		}
 		return entity;
 	}
+	
+	public <T> T findEntityByUniqueProperty(Class clazz,String propertyName,Serializable value)	{
+		Session session = null;
+		Criteria criteria = null;
+		T entity = null;
+		try	{
+			session = getSession();
+			criteria = session.createCriteria(clazz);
+			criteria.add(Restrictions.eq(propertyName, value));
+			entity = (T) criteria.uniqueResult();
+		}
+		catch(HibernateException he)	{
+			logger.error(" <<<<<<<<<<<<<<<<<<<<<<< HibernateException occurred at findEntityByUniqueProperty {}",he);
+		}
+		catch(Exception e)	{
+			logger.error(" <<<<<<<<<<<<<<<<<<<<<<< SystemException occurred at findEntityByUniqueProperty {}",e);
+			
+		}
+		finally	{
+			closeSession();
+		}
+		return entity;
+	}
 }

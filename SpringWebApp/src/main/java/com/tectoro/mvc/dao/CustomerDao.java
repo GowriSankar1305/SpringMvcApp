@@ -9,4 +9,5 @@ public interface CustomerDao {
 	public Customer updateCustomer(Customer customer);
 	public List<Customer> getAllCustomers();
 	public Customer getCustomerById(Long customerId);
+	public Customer getCustomerByUserName(String userName);
 }

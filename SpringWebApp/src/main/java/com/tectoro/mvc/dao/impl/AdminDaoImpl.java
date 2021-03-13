@@ -29,4 +29,9 @@ public class AdminDaoImpl implements AdminDao {
 	public Admin getAdminById(Long adminId) {
 		return hibernateUtils.findEntityByPrimaryId(Admin.class, adminId);
 	}
+
+	@Override
+	public Admin getAdminByUserName(String userName) {
+		return hibernateUtils.findEntityByUniqueProperty(Admin.class, "userName", userName);
+	}
 }

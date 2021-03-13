@@ -9,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/admin/")
 public class AdminController {
 	
-	@RequestMapping(value = "/home",method = RequestMethod.GET)
+	@RequestMapping(value = "home",method = RequestMethod.GET)
 	public ModelAndView home()	{
-		return new ModelAndView("index", "message", " It is spring mvc Application");
+		return new ModelAndView("admin/index", "message", " It is spring mvc Application");
 	}
 }

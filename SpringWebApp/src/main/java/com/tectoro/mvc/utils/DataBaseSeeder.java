@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -29,9 +30,11 @@ public class DataBaseSeeder {
 	private AdminDao adminDao;
 	@Autowired
 	private CustomerDao customerDao;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	@EventListener
-	public void populateDatabase(ContextRefreshedEvent cfe)	{
+	public void populateDatabase(final ContextRefreshedEvent cfe)	{
 		logger.info("**************** Start of DataBaseSeeder.populateDatabase *****************");
 		populateSuperAdminTable();
 		populateAdminTable();
@@ -50,7 +53,7 @@ public class DataBaseSeeder {
 			superAdmin.setMobileNumber("9848022338");
 			superAdmin.setSuperAdminName("superadmin");
 			superAdmin.setUserName("superadmin1");
-			superAdmin.setPassword("123"); // to be encrypted
+			superAdmin.setPassword(passwordEncoder.encode("123"));
 			superAdminDao.saveOrUpdateSuperAdmin(superAdmin);
 			logger.info("*********** Start of DataBaseSeeder.populateSuperAdminTable **********");
 		}
@@ -73,7 +76,7 @@ public class DataBaseSeeder {
 			admin.setIsActiveUser((byte)1);
 			admin.setMobileNumber("9848022338");
 			admin.setUserName("admin1");
-			admin.setPassword("123"); // to be encrypted
+			admin.setPassword(passwordEncoder.encode("123")); // to be encrypted
 			admin.setModifiedDate(System.currentTimeMillis());
 			admin.setAge(24);
 			adminDao.saveOrUpdateAdmin(admin);
@@ -100,7 +103,7 @@ public class DataBaseSeeder {
 			customer.setLastName("last customer");
 			customer.setMobileNumber("9848022338");
 			customer.setModifiedDate(System.currentTimeMillis());
-			customer.setPassword("123"); // to be encrypted
+			customer.setPassword(passwordEncoder.encode("123")); // to be encrypted
 			customer.setUserName("customer1");
 			customerDao.saveCustomer(customer);
 		}

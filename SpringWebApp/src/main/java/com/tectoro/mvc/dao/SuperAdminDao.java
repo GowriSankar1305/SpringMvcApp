@@ -8,4 +8,5 @@ public interface SuperAdminDao {
 	public SuperAdmin saveOrUpdateSuperAdmin(SuperAdmin spAdmin);
 	public SuperAdmin getSuperAdminById(Long spAdminId);
 	public List<SuperAdmin> getAllSuperAdmins();
+	public SuperAdmin getSuperAdminByUserName(String userName);
 }

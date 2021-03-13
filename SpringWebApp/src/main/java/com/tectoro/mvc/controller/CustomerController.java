@@ -11,6 +11,6 @@ public class CustomerController {
 	
 	@RequestMapping(value = "home",method = RequestMethod.GET)
 	public ModelAndView home()	{
-		return new ModelAndView();
+		return new ModelAndView("customer/home");
 	}
 }

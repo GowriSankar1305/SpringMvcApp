@@ -8,4 +8,5 @@ public interface AdminDao {
 	public Admin saveOrUpdateAdmin(Admin admin);
 	public List<Admin> getAllAdmins();
 	public Admin getAdminById(Long adminId);
+	public Admin getAdminByUserName(String userName);
 }

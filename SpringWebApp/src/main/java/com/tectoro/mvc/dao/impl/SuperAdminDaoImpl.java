@@ -29,4 +29,9 @@ public class SuperAdminDaoImpl implements SuperAdminDao {
 	public List<SuperAdmin> getAllSuperAdmins() {
 		return hibernateUtils.loadEntities(SuperAdmin.class);
 	}
+
+	@Override
+	public SuperAdmin getSuperAdminByUserName(String userName) {
+		return hibernateUtils.findEntityByUniqueProperty(SuperAdmin.class, "userName", userName);
+	}
 }

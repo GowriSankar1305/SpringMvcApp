@@ -30,4 +30,9 @@ public class CustomerDaoImpl implements CustomerDao {
 	public Customer getCustomerById(Long customerId) {
 		return hibernateUtils.findEntityByPrimaryId(Customer.class, customerId);
 	}
+
+	@Override
+	public Customer getCustomerByUserName(String userName) {
+		return hibernateUtils.findEntityByUniqueProperty(Customer.class, "userName", userName);
+	}
 }
