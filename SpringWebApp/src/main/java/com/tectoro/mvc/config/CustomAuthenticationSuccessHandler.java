@@ -61,7 +61,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		httpSession.setAttribute("roleName", roleName);
 		httpSession.setAttribute("userName", userName);
 		logger.info("**************** End of CustomAuthenticationSuccessHandler.onAuthenticationSuccess **************");
-		//new DefaultRedirectStrategy().sendRedirect(request, response, redirectUrl);
-		response.sendRedirect(request.getContextPath() + redirectUrl);
+		new DefaultRedirectStrategy().sendRedirect(request, response, redirectUrl);
+		//response.sendRedirect(request.getContextPath() + "/get-home");
 	}
 }

@@ -9,7 +9,7 @@
 <body>
 <h2>Welcome to the application</h2>
 <a href="javascript:document.getElementById('logOutFrm').submit();" class="btn btn-default btn-flat">Sign out</a>
-<form action="logout" id="logOutFrm">
+<form action="logout" id="logOutFrm" method="post">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 </body>

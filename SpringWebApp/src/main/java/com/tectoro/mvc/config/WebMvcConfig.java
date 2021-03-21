@@ -27,9 +27,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-		registry.addResourceHandler("/admin/resources/**").addResourceLocations("/resources/");
-		registry.addResourceHandler("/superadmin/resources/**").addResourceLocations("/resources/");
-		registry.addResourceHandler("/customer/resources/**").addResourceLocations("/resources/");
+		//registry.addResourceHandler("/admin/resources/**").addResourceLocations("/resources/");
+		//registry.addResourceHandler("/superadmin/resources/**").addResourceLocations("/resources/");
+		//registry.addResourceHandler("/customer/resources/**").addResourceLocations("/resources/");
 	}
 	
 	@Bean
