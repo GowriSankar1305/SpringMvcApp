@@ -1,6 +1,6 @@
 package com.tectoro.mvc.utils;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -18,6 +18,7 @@ import com.tectoro.mvc.dao.SuperAdminDao;
 import com.tectoro.mvc.entity.Admin;
 import com.tectoro.mvc.entity.Customer;
 import com.tectoro.mvc.entity.SuperAdmin;
+import com.tectoro.mvc.enums.GenderEnum;
 
 @Component
 public class DataBaseSeeder {
@@ -59,7 +60,6 @@ public class DataBaseSeeder {
 		}
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void populateAdminTable()	{
 		logger.info("*********** Start of DataBaseSeeder.populateAdminTable **********");
 		List<Admin> adminList = adminDao.getAllAdmins();
@@ -67,7 +67,7 @@ public class DataBaseSeeder {
 			Admin admin = new Admin();
 			admin.setAddress("admin address");
 			admin.setAge(24);
-			admin.setDateOfBirth(new Date(1996, 5, 31));
+			admin.setDateOfBirth(LocalDate.of(1996, 05, 31));
 			admin.setEmailId("admin1@gmail.com");
 			admin.setCreatedDate(System.currentTimeMillis());
 			admin.setFirstName("first admin");
@@ -76,7 +76,7 @@ public class DataBaseSeeder {
 			admin.setIsActiveUser((byte)1);
 			admin.setMobileNumber("9848022338");
 			admin.setUserName("admin1");
-			admin.setPassword(passwordEncoder.encode("123")); // to be encrypted
+			admin.setPassword(passwordEncoder.encode("123"));
 			admin.setModifiedDate(System.currentTimeMillis());
 			admin.setAge(24);
 			adminDao.saveOrUpdateAdmin(admin);
@@ -84,7 +84,6 @@ public class DataBaseSeeder {
 		}
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void populateCustomerTable()	{
 		logger.info("*********** End of DataBaseSeeder.populateCustomerTable **********");
 		List<Customer> customerList = customerDao.getAllCustomers();
@@ -93,7 +92,7 @@ public class DataBaseSeeder {
 			customer.setAddress("customer address");
 			customer.setAge(24);
 			customer.setCreatedDate(System.currentTimeMillis());
-			customer.setDateOfBirth(new Date(1996, 5, 31));
+			customer.setDateOfBirth(LocalDate.of(1996, 05, 31));
 			customer.setEmailId("customer1@gmail.com");
 			customer.setFirstName("first customer");
 			customer.setGender(GenderEnum.MALE);
@@ -103,7 +102,7 @@ public class DataBaseSeeder {
 			customer.setLastName("last customer");
 			customer.setMobileNumber("9848022338");
 			customer.setModifiedDate(System.currentTimeMillis());
-			customer.setPassword(passwordEncoder.encode("123")); // to be encrypted
+			customer.setPassword(passwordEncoder.encode("123"));
 			customer.setUserName("customer1");
 			customerDao.saveCustomer(customer);
 		}

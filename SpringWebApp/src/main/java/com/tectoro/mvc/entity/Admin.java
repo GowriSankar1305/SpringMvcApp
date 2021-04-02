@@ -1,17 +1,21 @@
 package com.tectoro.mvc.entity;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.tectoro.mvc.utils.GenderEnum;
+import com.tectoro.mvc.enums.GenderEnum;
 
 @Entity
 @Table(name = "tbl_admin")
@@ -30,7 +34,7 @@ public class Admin {
 	@Column(name = "email_id")
 	private String emailId;
 	@Column(name = "date_of_birth")
-	private Date dateOfBirth;
+	private LocalDate dateOfBirth;
 	@Column(name = "gender")
 	@Enumerated(EnumType.STRING)
 	private GenderEnum gender;
@@ -48,7 +52,15 @@ public class Admin {
 	private Long createdDate;
 	@Column(name = "modified_date")
 	private Long modifiedDate;
-	
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "admin",cascade = CascadeType.ALL)
+	private List<Staff> staffList;
+
+	public List<Staff> getStaffList() {
+		return staffList;
+	}
+	public void setStaffList(List<Staff> staffList) {
+		this.staffList = staffList;
+	}
 	public Long getAdminId() {
 		return adminId;
 	}
@@ -79,10 +91,10 @@ public class Admin {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public Date getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public GenderEnum getGender() {

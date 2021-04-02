@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import com.tectoro.mvc.dao.CustomerDao;
 import com.tectoro.mvc.dto.CustomerDto;
 import com.tectoro.mvc.entity.Customer;
+import com.tectoro.mvc.enums.DateFormatEnum;
+import com.tectoro.mvc.enums.GenderEnum;
 import com.tectoro.mvc.service.CustomerService;
 import com.tectoro.mvc.utils.DateAndTimeUtils;
-import com.tectoro.mvc.utils.DateFormatEnum;
-import com.tectoro.mvc.utils.GenderEnum;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -49,8 +49,7 @@ public class CustomerServiceImpl implements CustomerService {
 			customer = new Customer();
 			customer.setAddress(dto.getAddress());
 			customer.setAge(dto.getAge());
-			customer.setDateOfBirth(DateAndTimeUtils.convertStringtoSqlDate(
-					dto.getDateOfBirth(), DateFormatEnum.YYYY_MM_DD));
+			customer.setDateOfBirth(DateAndTimeUtils.convertStringToLocalDate(dto.getDateOfBirth(), DateFormatEnum.YYYY_MM_DD));
 			customer.setCustomerId(dto.getCustomerId());
 			customer.setEmailId(dto.getEmailId());
 			customer.setCustomerId(dto.getCustomerId());
@@ -77,7 +76,7 @@ public class CustomerServiceImpl implements CustomerService {
 			customerDto.setCreatedByCustomer(entity.getIscreatedFromCustomerJourney());
 			customerDto.setCreatedDate(entity.getCreatedDate());
 			customerDto.setCustomerId(entity.getCustomerId());
-			customerDto.setDateOfBirth(DateAndTimeUtils.convertSqlDateToString(
+			customerDto.setDateOfBirth(DateAndTimeUtils.convertLocalDateToString(
 					entity.getDateOfBirth(), DateFormatEnum.YYYY_MM_DD));
 			customerDto.setEmailId(entity.getEmailId());
 			customerDto.setFirstName(entity.getFirstName());

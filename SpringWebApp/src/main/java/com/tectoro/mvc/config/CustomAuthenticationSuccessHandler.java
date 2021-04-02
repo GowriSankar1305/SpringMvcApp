@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 import com.tectoro.mvc.dao.AdminDao;
 import com.tectoro.mvc.dao.CustomerDao;
 import com.tectoro.mvc.dao.SuperAdminDao;
-import com.tectoro.mvc.utils.RoleEnum;
+import com.tectoro.mvc.enums.RoleEnum;
 
 @Component
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
@@ -44,15 +44,15 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		roleName = user.getAuthorities().stream().map(item -> item.getAuthority()).collect(Collectors.toList()).get(0);
 		userName = user.getUsername();
 		logger.info("------------------> roleName {} , userName {}",roleName,userName);
-		if(roleName.equals(RoleEnum.ADMIN.name()))	{
+		if(roleName.equals(RoleEnum.ROLE_ADMIN.name()))	{
 			loggedInUserId = adminDao.getAdminByUserName(userName).getAdminId();
 			redirectUrl = "/admin/home";
 		}
-		else if(roleName.equals(RoleEnum.SUPERADMIN.name()))	{
+		else if(roleName.equals(RoleEnum.ROLE_SUPERADMIN.name()))	{
 			loggedInUserId = superAdminDao.getSuperAdminByUserName(userName).getSuperAdminId();
 			redirectUrl = "/superadmin/home";
 		}
-		else if(roleName.equals(RoleEnum.CUSTOMER.name()))	{
+		else if(roleName.equals(RoleEnum.ROLE_CUSTOMER.name()))	{
 			loggedInUserId = customerDao.getCustomerByUserName(userName).getCustomerId();
 			redirectUrl = "/customer/home";
 		}

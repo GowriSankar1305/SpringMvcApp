@@ -14,7 +14,7 @@ import com.tectoro.mvc.dao.SuperAdminDao;
 import com.tectoro.mvc.entity.Admin;
 import com.tectoro.mvc.entity.Customer;
 import com.tectoro.mvc.entity.SuperAdmin;
-import com.tectoro.mvc.utils.RoleEnum;
+import com.tectoro.mvc.enums.RoleEnum;
 
 @Component
 public class CustomUserDetailsService implements UserDetailsService {
@@ -43,7 +43,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 			user.setEnabled(true);
 			user.setPassword(superAdmin.getPassword());
 			user.setUserName(superAdmin.getUserName());
-			user.setRole(RoleEnum.SUPERADMIN);
+			user.setRole(RoleEnum.ROLE_SUPERADMIN);
 			logger.info("****************** End of CustomUserDetailsService.loadUserByUsername ****************");
 			return new CustomUserDetails(user);
 		}
@@ -58,7 +58,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 				user.setEnabled(true);
 				user.setPassword(admin.getPassword());
 				user.setUserName(admin.getUserName());
-				user.setRole(RoleEnum.ADMIN);
+				user.setRole(RoleEnum.ROLE_ADMIN);
 				logger.info("****************** End of CustomUserDetailsService.loadUserByUsername ****************");
 				return new CustomUserDetails(user);
 			}
@@ -73,7 +73,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 					user.setEnabled(true);
 					user.setPassword(customer.getPassword());
 					user.setUserName(customer.getUserName());
-					user.setRole(RoleEnum.CUSTOMER);
+					user.setRole(RoleEnum.ROLE_CUSTOMER);
 					logger.info("****************** End of CustomUserDetailsService.loadUserByUsername ****************");
 					return new CustomUserDetails(user);
 				}

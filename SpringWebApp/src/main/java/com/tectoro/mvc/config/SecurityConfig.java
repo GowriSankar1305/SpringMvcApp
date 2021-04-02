@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.tectoro.mvc.utils.RoleEnum;
+import com.tectoro.mvc.enums.RoleEnum;
 
 
 @Configuration

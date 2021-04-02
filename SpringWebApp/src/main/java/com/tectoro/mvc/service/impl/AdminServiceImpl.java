@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import com.tectoro.mvc.dao.AdminDao;
 import com.tectoro.mvc.dto.AdminDto;
 import com.tectoro.mvc.entity.Admin;
+import com.tectoro.mvc.enums.DateFormatEnum;
+import com.tectoro.mvc.enums.GenderEnum;
 import com.tectoro.mvc.service.AdminService;
 import com.tectoro.mvc.utils.DateAndTimeUtils;
-import com.tectoro.mvc.utils.DateFormatEnum;
-import com.tectoro.mvc.utils.GenderEnum;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -56,7 +56,7 @@ public class AdminServiceImpl implements AdminService {
 			admin.setUserName(dto.getUserName());
 			admin.setLastName(dto.getLastName());
 			admin.setMobileNumber(dto.getMobileNumber());
-			admin.setDateOfBirth(DateAndTimeUtils.convertStringtoSqlDate(
+			admin.setDateOfBirth(DateAndTimeUtils.convertStringToLocalDate(
 					dto.getDateOfBirth(), DateFormatEnum.YYYY_MM_DD));
 			admin.setPassword(dto.getPassword());
 		}
@@ -70,7 +70,7 @@ public class AdminServiceImpl implements AdminService {
 			adminDto.setAddress(entity.getAddress());
 			adminDto.setAdminId(entity.getAdminId());
 			adminDto.setAge(entity.getAge());
-			adminDto.setDateOfBirth(DateAndTimeUtils.convertSqlDateToString(
+			adminDto.setDateOfBirth(DateAndTimeUtils.convertLocalDateToString(
 					entity.getDateOfBirth(), DateFormatEnum.YYYY_MM_DD));
 			adminDto.setEmailId(entity.getEmailId());
 			adminDto.setFirstName(entity.getFirstName());

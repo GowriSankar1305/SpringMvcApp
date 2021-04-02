@@ -2,7 +2,7 @@ package com.tectoro.mvc.config;
 
 import java.io.Serializable;
 
-import com.tectoro.mvc.utils.RoleEnum;
+import com.tectoro.mvc.enums.RoleEnum;
 
 public class User implements Serializable{
 	

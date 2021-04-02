@@ -1,6 +1,6 @@
 package com.tectoro.mvc.entity;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.tectoro.mvc.utils.GenderEnum;
+import com.tectoro.mvc.enums.GenderEnum;
+import com.tectoro.mvc.enums.IdentityEnum;
 
 
 @Entity
@@ -40,7 +41,7 @@ public class Customer {
 	@Column(name = "modified_date")
 	private Long modifiedDate;
 	@Column(name = "date_of_birth")
-	private Date dateOfBirth;
+	private LocalDate dateOfBirth;
 	@Column(name = "age")
 	private Integer age;
 	@Column(name = "user_name",unique = true,nullable = false)
@@ -53,6 +54,11 @@ public class Customer {
 	private Byte iscreatedFromAdminJourney;
 	@Column(name = "is_created_from_customer_journey")
 	private Byte iscreatedFromCustomerJourney;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "identity_type")
+	private IdentityEnum identityType;
+	@Column(name = "identity_number")
+	private String identityNumber;
 	
 	public Byte getIscreatedFromAdminJourney() {
 		return iscreatedFromAdminJourney;
@@ -120,10 +126,10 @@ public class Customer {
 	public void setModifiedDate(Long modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
-	public Date getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public Integer getAge() {

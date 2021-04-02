@@ -21,7 +21,7 @@ public class SuperAdminController {
 	
 	@RequestMapping(value = "create-admin",method = RequestMethod.GET)
 	public ModelAndView createAdmin()	{
-		ModelAndView mav = new ModelAndView("createAdmin");
+		ModelAndView mav = new ModelAndView("superadmin/createAdmin");
 		return mav;
 	}
 }
