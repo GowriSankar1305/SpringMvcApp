@@ -41,15 +41,15 @@ public class BookedRoom {
 	@Column(name = "check_out_time")
 	private LocalDateTime checkOutTime;
 	@Column(name = "no_of_persons")
-	private Integer noOfPersons;
+	private Short noOfPersons;
 	@Column(name = "no_of_men")
-	private Integer men;
+	private Short men;
 	@Column(name = "no_of_women")
-	private Integer women;
+	private Short women;
 	@Column(name = "no_of_kids")
-	private Integer kids;
+	private Short kids;
 	@Column(name = "no_of_extra_persons")
-	private Integer extraPersons;
+	private Short extraPersons;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "booking_flag")
 	private BookingFlag bookingFlag;
@@ -104,28 +104,28 @@ public class BookedRoom {
 	public void setCheckOutTime(LocalDateTime checkOutTime) {
 		this.checkOutTime = checkOutTime;
 	}
-	public Integer getNoOfPersons() {
+	public Short getNoOfPersons() {
 		return noOfPersons;
 	}
-	public void setNoOfPersons(Integer noOfPersons) {
+	public void setNoOfPersons(Short noOfPersons) {
 		this.noOfPersons = noOfPersons;
 	}
-	public Integer getMen() {
+	public Short getMen() {
 		return men;
 	}
-	public void setMen(Integer men) {
+	public void setMen(Short men) {
 		this.men = men;
 	}
-	public Integer getWomen() {
+	public Short getWomen() {
 		return women;
 	}
-	public void setWomen(Integer women) {
+	public void setWomen(Short women) {
 		this.women = women;
 	}
-	public Integer getKids() {
+	public Short getKids() {
 		return kids;
 	}
-	public void setKids(Integer kids) {
+	public void setKids(Short kids) {
 		this.kids = kids;
 	}
 	public BookingFlag getBookingFlag() {

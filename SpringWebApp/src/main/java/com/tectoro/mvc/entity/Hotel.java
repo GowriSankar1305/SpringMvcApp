@@ -16,8 +16,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.tectoro.mvc.enums.PaymentType;
-
 @Entity
 @Table(name = "tbl_hotel")
 public class Hotel {
@@ -34,7 +32,7 @@ public class Hotel {
 	private String hotelCode;
 	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinTable(
-			name = "hotel_room_type",
+			name = "tbl_hotel_room_type",
 			joinColumns = @JoinColumn(name="hotel_id"),
 			inverseJoinColumns = @JoinColumn(name="room_type_id")
 	)
@@ -45,11 +43,16 @@ public class Hotel {
 	private String primaryContactNumber;
 	@Column(name = "secondary_contact_number")
 	private String secondaryContactNumber;
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "hotel",cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinTable(
+			name = "tbl_hotel_payment_type",
+			joinColumns = @JoinColumn(name="hotel_id"),
+			inverseJoinColumns = @JoinColumn(name="payment_type_id")
+	)
 	private List<PaymentType> paymentypes;
 	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinTable(
-			name = "hotel_facility",
+			name = "tbl_hotel_facility",
 			joinColumns = @JoinColumn(name="hotel_id"),
 			inverseJoinColumns = @JoinColumn(name="facility_id")
 	)

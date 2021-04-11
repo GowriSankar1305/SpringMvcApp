@@ -1,4 +1,4 @@
-    <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico"><title>login here</title>
+    <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico">
     <!-- BEGIN VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
     <!-- font icons-->

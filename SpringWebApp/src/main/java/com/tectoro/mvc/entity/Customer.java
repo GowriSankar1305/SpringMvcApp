@@ -60,6 +60,18 @@ public class Customer {
 	@Column(name = "identity_number")
 	private String identityNumber;
 	
+	public IdentityEnum getIdentityType() {
+		return identityType;
+	}
+	public void setIdentityType(IdentityEnum identityType) {
+		this.identityType = identityType;
+	}
+	public String getIdentityNumber() {
+		return identityNumber;
+	}
+	public void setIdentityNumber(String identityNumber) {
+		this.identityNumber = identityNumber;
+	}
 	public Byte getIscreatedFromAdminJourney() {
 		return iscreatedFromAdminJourney;
 	}

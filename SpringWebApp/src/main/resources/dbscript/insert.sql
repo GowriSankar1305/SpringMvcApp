@@ -572,7 +572,7 @@ insert into spring_db.tbl_state(state_id,state_name,country_id) values
 (2179, 'Rivercess', 123),
 (2180, 'Sinoe', 123),
 (2181, 'Ajdabiya', 124);
-INSERT INTO `states` (`id`, `name`, `country_id`) VALUES
+insert into spring_db.tbl_state(state_id,state_name,country_id) values
 (2182, 'Fezzan', 124),
 (2183, 'Banghazi', 124),
 (2184, 'Darnah', 124),

@@ -16,7 +16,7 @@ public class Designation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "designation_id")
-	private Long designationId;
+	private Integer designationId;
 	@Column(name = "designation")
 	private String designation;
 	@Column(name = "created_by_admin_id")
@@ -26,10 +26,10 @@ public class Designation {
 	@Column(name = "created_date")
 	private LocalDateTime createdDate;
 	
-	public Long getDesignationId() {
+	public Integer getDesignationId() {
 		return designationId;
 	}
-	public void setDesignationId(Long designationId) {
+	public void setDesignationId(Integer designationId) {
 		this.designationId = designationId;
 	}
 	public String getDesignation() {

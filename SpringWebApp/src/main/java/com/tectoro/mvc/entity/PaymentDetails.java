@@ -13,8 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.tectoro.mvc.enums.PaymentType;
-
 @Entity
 @Table(name = "tbl_payment_details")
 public class PaymentDetails {
@@ -29,9 +27,6 @@ public class PaymentDetails {
 	private LocalDateTime paymentDate;
 	@Column(name = "paid_amount")
 	private BigDecimal paidAmount;
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "customer_id")
-	private Customer customer;
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "payment_type_id")
 	private PaymentType paymentType;
@@ -55,8 +50,9 @@ public class PaymentDetails {
 	private BigDecimal grandTotal;
 	@Column(name = "sub_total")
 	private BigDecimal subTotal;
-	@Column(name = "room_id")
-	private Long roomId;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "booking_id")
+	private BookedRoom bookedRoom;
 	
 	public Long getPaymentId() {
 		return paymentId;
@@ -82,11 +78,11 @@ public class PaymentDetails {
 	public void setPaidAmount(BigDecimal paidAmount) {
 		this.paidAmount = paidAmount;
 	}
-	public Customer getCustomer() {
-		return customer;
+	public BookedRoom getBookedRoom() {
+		return bookedRoom;
 	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setBookedRoom(BookedRoom bookedRoom) {
+		this.bookedRoom = bookedRoom;
 	}
 	public PaymentType getPaymentType() {
 		return paymentType;
@@ -153,11 +149,5 @@ public class PaymentDetails {
 	}
 	public void setSubTotal(BigDecimal subTotal) {
 		this.subTotal = subTotal;
-	}
-	public Long getRoomId() {
-		return roomId;
-	}
-	public void setRoomId(Long roomId) {
-		this.roomId = roomId;
 	}
 }

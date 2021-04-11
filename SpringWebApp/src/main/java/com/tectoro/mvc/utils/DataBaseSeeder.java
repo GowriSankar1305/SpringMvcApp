@@ -19,6 +19,7 @@ import com.tectoro.mvc.entity.Admin;
 import com.tectoro.mvc.entity.Customer;
 import com.tectoro.mvc.entity.SuperAdmin;
 import com.tectoro.mvc.enums.GenderEnum;
+import com.tectoro.mvc.enums.IdentityEnum;
 
 @Component
 public class DataBaseSeeder {
@@ -104,6 +105,8 @@ public class DataBaseSeeder {
 			customer.setModifiedDate(System.currentTimeMillis());
 			customer.setPassword(passwordEncoder.encode("123"));
 			customer.setUserName("customer1");
+			customer.setIdentityNumber("ASDF1234GHJK88");
+			customer.setIdentityType(IdentityEnum.PASSPORT_NO);
 			customerDao.saveCustomer(customer);
 		}
 		logger.info("*********** End of DataBaseSeeder.populateCustomerTable **********");

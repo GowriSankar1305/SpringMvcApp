@@ -32,16 +32,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/superadmin/**").hasRole(RoleEnum.SUPERADMIN.name())
 		.antMatchers("/admin/**").hasAnyRole(RoleEnum.SUPERADMIN.name(),RoleEnum.ADMIN.name())
 		.antMatchers("/customer/**").hasAnyRole(RoleEnum.ADMIN.name(),RoleEnum.CUSTOMER.name())
+		.anyRequest().authenticated()
 		.antMatchers("/**").authenticated().and()
 		.formLogin().loginPage("/login").successHandler(successHandler)
 		.failureUrl("/login?login-fail");
 		
-		http.logout().logoutSuccessUrl("/login?logout-success")
-		.invalidateHttpSession(true)
-		.deleteCookies("JSESSIONID");
+		http.logout().logoutSuccessUrl("/login?logout-success").deleteCookies("JSESSIONID");
 		
-		http.sessionManagement().invalidSessionUrl("/login?session-invalid")
-		.maximumSessions(1).expiredUrl("/login?session-expired");
+		http.sessionManagement().maximumSessions(1).expiredUrl("/login?session-expired");
 	}
 	
 	@Override

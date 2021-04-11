@@ -3,6 +3,7 @@
 <head>
 </head>
 <body>
-<h3><a href="${pageRequest.request.contextPath }/login">Login</a></h3>
+<h1>${message }</h1>
+<h3><a href="${pageContext.request.contextPath}/login">Login</a></h3>
 </body>
 </html>
