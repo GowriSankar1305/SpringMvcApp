@@ -52,8 +52,8 @@ public class DateAndTimeUtils {
 	public static String convertLocalDateToString(LocalDate date,DateFormatEnum dateFormat)	{
 		String formattedDate = null;
 		if(date != null)	{
-			logger.info("---------------------------> dateFormat:: {}",dateFormat.name());
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat.name()); 
+			logger.info("---------------------------> dateFormat:: {}",dateFormat.getField());
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat.getField()); 
 			formattedDate = date.format(formatter);
 		}
 		return formattedDate;
@@ -63,7 +63,7 @@ public class DateAndTimeUtils {
 		LocalDate date = null;
 		if(formattedDate != null)	{
 			logger.info("-----------------------> formattedDate:: {}",formattedDate);
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat.name()); 
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat.getField()); 
 			date = LocalDate.parse(formattedDate,formatter);
 		}
 		return date;

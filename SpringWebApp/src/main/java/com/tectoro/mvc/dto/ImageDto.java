@@ -1,57 +1,30 @@
-package com.tectoro.mvc.entity;
+package com.tectoro.mvc.dto;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import com.tectoro.mvc.enums.ImageEnum;
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class ImageDto implements Serializable {
 
-@Entity
-@Table(name = "tbl_image")
-public class Image {
+	private static final long serialVersionUID = 1857376623825913720L;
 	
-	@Id
-	@Column(name = "image_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long imageId;
-	@Column(name = "image_path")
 	private String imagePath;
-	@Column(name = "file_extension")
 	private String fileExtension;
-	@Column(name = "image_size")
 	private String imageSize;
-	@Column(name = "mime_type")
-	private String mimeType;
-	@Column(name = "created_date")
-	private LocalDateTime createdDate;
-	@Column(name = "updated_date")
-	private LocalDateTime updatedDate;
-	@Column(name = "original_file_name")
 	private String originalFileName;
-	@Column(name = "is_deleted")
-	private Byte isDeleted;
-	@Column(name = "image_type")
-	@Enumerated(EnumType.STRING)
-	private ImageEnum imageType;
-	@Column(name = "hotel_id")
+	private String imageType;
 	private Long hotelId;
-	@Column(name = "room_id")
 	private Long roomId;
-	@Column(name = "staff_id")
 	private Long staffId;
-	@Column(name = "customer_id")
 	private Long customerId;
-	@Column(name = "generated_file_name")
-	private String generatedFileName;
-	@Column(name = "admin_id")
 	private Long adminId;
+	private Byte isDeleted;
+	private String mimeType;
+	private String generatedFileName;
+	private LocalDateTime createdDate;
 	
 	public Long getAdminId() {
 		return adminId;
@@ -59,11 +32,29 @@ public class Image {
 	public void setAdminId(Long adminId) {
 		this.adminId = adminId;
 	}
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
+	}
 	public String getGeneratedFileName() {
 		return generatedFileName;
 	}
 	public void setGeneratedFileName(String generatedFileName) {
 		this.generatedFileName = generatedFileName;
+	}
+	public String getMimeType() {
+		return mimeType;
+	}
+	public void setMimeType(String mimeType) {
+		this.mimeType = mimeType;
+	}
+	public Byte getIsDeleted() {
+		return isDeleted;
+	}
+	public void setIsDeleted(Byte isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 	public Long getImageId() {
 		return imageId;
@@ -89,40 +80,16 @@ public class Image {
 	public void setImageSize(String imageSize) {
 		this.imageSize = imageSize;
 	}
-	public String getMimeType() {
-		return mimeType;
-	}
-	public void setMimeType(String mimeType) {
-		this.mimeType = mimeType;
-	}
-	public LocalDateTime getCreatedDate() {
-		return createdDate;
-	}
-	public void setCreatedDate(LocalDateTime createdDate) {
-		this.createdDate = createdDate;
-	}
-	public LocalDateTime getUpdatedDate() {
-		return updatedDate;
-	}
-	public void setUpdatedDate(LocalDateTime updatedDate) {
-		this.updatedDate = updatedDate;
-	}
 	public String getOriginalFileName() {
 		return originalFileName;
 	}
 	public void setOriginalFileName(String originalFileName) {
 		this.originalFileName = originalFileName;
 	}
-	public Byte getIsDeleted() {
-		return isDeleted;
-	}
-	public void setIsDeleted(Byte isDeleted) {
-		this.isDeleted = isDeleted;
-	}
-	public ImageEnum getImageType() {
+	public String getImageType() {
 		return imageType;
 	}
-	public void setImageType(ImageEnum imageType) {
+	public void setImageType(String imageType) {
 		this.imageType = imageType;
 	}
 	public Long getHotelId() {
@@ -148,5 +115,13 @@ public class Image {
 	}
 	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
+	}
+	
+	@Override
+	public String toString() {
+		return "ImageDto [imageId=" + imageId + ", imagePath=" + imagePath + ", fileExtension=" + fileExtension
+				+ ", imageSize=" + imageSize + ", originalFileName=" + originalFileName + ", imageType=" + imageType
+				+ ", hotelId=" + hotelId + ", roomId=" + roomId + ", staffId=" + staffId + ", customerId=" + customerId
+				+ "]";
 	}
 }

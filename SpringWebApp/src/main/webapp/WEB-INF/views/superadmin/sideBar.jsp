@@ -9,9 +9,9 @@
         <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
           <li class=" nav-item"><a href="index.html"><i class="icon-home3"></i><span data-i18n="nav.dash.main" class="menu-title">Dashboard</span><span class="tag tag tag-primary tag-pill float-xs-right mr-2">2</span></a>
             <ul class="menu-content">
-              <li class="active"><a href="create-admin" data-i18n="nav.dash.main" class="menu-item">create administrator</a>
+              <li class="active"><a href="create-admin" data-i18n="nav.dash.main" class="menu-item">Create administrator</a>
               </li>
-              <li><a href="dashboard-2.html" data-i18n="nav.dash.main" class="menu-item">Dashboard 2</a>
+              <li><a href="get-admins" data-i18n="nav.dash.main" class="menu-item">Administrator list</a>
               </li>
             </ul>
           </li>

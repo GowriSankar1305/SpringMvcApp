@@ -60,6 +60,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		httpSession.setAttribute("loggedInUserId", loggedInUserId);
 		httpSession.setAttribute("roleName", roleName);
 		httpSession.setAttribute("userName", userName);
+		httpSession.setMaxInactiveInterval(300);
 		logger.info("**************** End of CustomAuthenticationSuccessHandler.onAuthenticationSuccess **************");
 		new DefaultRedirectStrategy().sendRedirect(request, response, redirectUrl);
 		//response.sendRedirect(request.getContextPath() + "/get-home");

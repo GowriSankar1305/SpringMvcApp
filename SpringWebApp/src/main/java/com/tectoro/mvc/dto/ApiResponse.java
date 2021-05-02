@@ -12,7 +12,28 @@ public class ApiResponse implements Serializable {
 	private int statusCode;
 	private String successMessage;
 	private String errorMessage;
+	private boolean isEmailExists;
+	private boolean isUserNameExists;
+	private boolean isHotelNameExists;
 	
+	public boolean isEmailExists() {
+		return isEmailExists;
+	}
+	public void setEmailExists(boolean isEmailExists) {
+		this.isEmailExists = isEmailExists;
+	}
+	public boolean isUserNameExists() {
+		return isUserNameExists;
+	}
+	public void setUserNameExists(boolean isUserNameExists) {
+		this.isUserNameExists = isUserNameExists;
+	}
+	public boolean isHotelNameExists() {
+		return isHotelNameExists;
+	}
+	public void setHotelNameExists(boolean isHotelNameExists) {
+		this.isHotelNameExists = isHotelNameExists;
+	}
 	public int getStatusCode() {
 		return statusCode;
 	}

@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http.logout().logoutSuccessUrl("/login?logout-success").deleteCookies("JSESSIONID");
 		
-		http.sessionManagement().maximumSessions(1).expiredUrl("/login?session-expired");
+		http.sessionManagement().invalidSessionUrl("/login?session-expired");
 	}
 	
 	@Override

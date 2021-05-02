@@ -7,6 +7,6 @@
 <script src="resources/js/jquery.matchHeight-min.js" type="text/javascript"></script>
 <script src="resources/js/screenfull.min.js" type="text/javascript"></script>
 <script src="resources/js/pace.min.js" type="text/javascript"></script>
-<script src="resources/js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="resources/js/app-menu.js" type="text/javascript"></script>
+<script src="resources/js/parsley.min.js" type="text/javascript"></script>
 <script src="resources/js/app.js" type="text/javascript"></script>

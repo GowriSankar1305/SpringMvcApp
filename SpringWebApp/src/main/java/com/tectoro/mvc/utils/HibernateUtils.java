@@ -2,6 +2,8 @@ package com.tectoro.mvc.utils;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -168,5 +170,31 @@ public class HibernateUtils {
 			closeSession();
 		}
 		return entity;
+	}
+	
+	public <T> List<T> loadEntitiesBsdOnSearchCriteria(Class clazz,Map<String, Serializable> dataMap)	{
+		Session session = null;
+		Criteria criteria = null;
+		List<T> list = null;
+		try	{
+			session = getSession();
+			criteria = session.createCriteria(clazz);
+			if(null != dataMap)	{
+				for(Entry<String, Serializable> entry : dataMap.entrySet())	{
+					criteria.add(Restrictions.eq(entry.getKey(), entry.getValue()));
+				}
+			}
+			list = criteria.list();
+		}
+		catch (HibernateException he) {
+			logger.error(" <<<<<<<<<<<<<<<<<<<<<<< HibernateException occurred at loadEntitiesBsdOnSearchCriteria {}",he);
+		}
+		catch(Exception e)	{
+			logger.error(" <<<<<<<<<<<<<<<<<<<<<<< SystemException occurred at loadEntitiesBsdOnSearchCriteria {}",e);
+		}
+		finally {
+			closeSession();
+		}
+		return list;
 	}
 }

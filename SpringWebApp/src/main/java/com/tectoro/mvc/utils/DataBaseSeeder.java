@@ -35,7 +35,7 @@ public class DataBaseSeeder {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
-	@EventListener
+	//@EventListener
 	public void populateDatabase(final ContextRefreshedEvent cfe)	{
 		logger.info("**************** Start of DataBaseSeeder.populateDatabase *****************");
 		populateSuperAdminTable();
@@ -63,7 +63,7 @@ public class DataBaseSeeder {
 	
 	public void populateAdminTable()	{
 		logger.info("*********** Start of DataBaseSeeder.populateAdminTable **********");
-		List<Admin> adminList = adminDao.getAllAdmins();
+		List<Admin> adminList = adminDao.getAdminsBsdOnSearchCriteria(null);
 		if(CollectionUtils.isEmpty(adminList))	{
 			Admin admin = new Admin();
 			admin.setAddress("admin address");

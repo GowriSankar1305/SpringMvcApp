@@ -1,12 +1,17 @@
 package com.tectoro.mvc.service.impl;
 
+import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import com.tectoro.mvc.dao.AdminDao;
 import com.tectoro.mvc.dto.AdminDto;
+import com.tectoro.mvc.dto.AdminSearchCriteria;
 import com.tectoro.mvc.entity.Admin;
 import com.tectoro.mvc.enums.DateFormatEnum;
 import com.tectoro.mvc.enums.GenderEnum;
@@ -18,12 +23,15 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
 	private AdminDao adminDao;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Override
 	public AdminDto saveAdmin(AdminDto adminDto) {
 		Admin admin = convertDtoToEntity.apply(adminDto);
 		admin.setCreatedDate(System.currentTimeMillis());
 		admin.setModifiedDate(System.currentTimeMillis());
+		admin.setPassword(passwordEncoder.encode(adminDto.getPassword()));
 		admin = adminDao.saveOrUpdateAdmin(admin);
 		return convertEntityToDto.apply(admin);
 	}
@@ -58,7 +66,6 @@ public class AdminServiceImpl implements AdminService {
 			admin.setMobileNumber(dto.getMobileNumber());
 			admin.setDateOfBirth(DateAndTimeUtils.convertStringToLocalDate(
 					dto.getDateOfBirth(), DateFormatEnum.YYYY_MM_DD));
-			admin.setPassword(dto.getPassword());
 		}
 		return admin;
 	};
@@ -78,9 +85,34 @@ public class AdminServiceImpl implements AdminService {
 			adminDto.setIsActiveUser(entity.getIsActiveUser());
 			adminDto.setLastName(entity.getLastName());
 			adminDto.setMobileNumber(entity.getMobileNumber());
-			adminDto.setPassword(entity.getPassword());
 			adminDto.setUserName(entity.getUserName());
 		}
 		return adminDto;
 	};
+
+	@Override
+	public AdminDto getAdminByUserName(String uName) {
+		return convertEntityToDto.apply(adminDao.getAdminByUserName(uName));
+	}
+
+	@Override
+	public AdminDto getAdminByEmail(String email) {
+		return convertEntityToDto.apply(adminDao.getAdminByEmail(email));
+	}
+
+	@Override
+	public List<AdminDto> getAdminsBsdOnSearchCriteria(AdminSearchCriteria searchCriteria) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AdminDto> getAllAdmins() {
+		List<AdminDto> adminDtoList = null;
+		List<Admin> admins = adminDao.getAllAdmins(); 
+		if(!CollectionUtils.isEmpty(admins))	{
+			adminDtoList = admins.stream().map(convertEntityToDto).collect(Collectors.toList());
+		}
+		return adminDtoList;
+	}
 }

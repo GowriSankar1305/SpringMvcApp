@@ -310,3 +310,9 @@ constraint tbl_hotel_payment_type_fk_01 foreign key(hotel_id) references spring_
 constraint tbl_hotel_payment_type_fk_02 foreign key(payment_type_id) references spring_db.tbl_payment_type(payment_type_id)
 );
 -- hotel payment type
+
+-- 27-Apr-2021 Start --
+alter table spring_db.tbl_image add column generated_file_name varchar(200) not null;
+alter table spring_db.tbl_image modify column image_size varchar(10);
+alter table spring_db.tbl_image add column admin_id bigint;
+-- 27-Apr-2021 End --
