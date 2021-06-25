@@ -112,7 +112,7 @@ $(function(){
 			$('#password').focus();
 			return false;
 		}
-		$('#submitBtn').html('Checking...');
+		$('#submitBtn').html('<i class="icon-spinner3"></i> Checking...');
 		$('#submitBtn').attr('disabled',true);
 		return true;
 	});

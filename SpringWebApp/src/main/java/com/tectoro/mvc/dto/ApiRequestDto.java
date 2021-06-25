@@ -12,7 +12,7 @@ public class ApiRequestDto implements Serializable {
 	private String emailId;
 	private String userName;
 	private String hotelName;
-	
+
 	public String getEmailId() {
 		return emailId;
 	}

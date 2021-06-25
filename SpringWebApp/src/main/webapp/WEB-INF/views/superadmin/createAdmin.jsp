@@ -62,7 +62,7 @@ textarea.parsley-error:focus {
 				</div>
 				<div class="card-body collapse in">
 					<div class="card-block">
-						<form class="form" id="register-form" method="post" enctype="multipart/form-data" action="save-admin-details">
+						<form class="form" id="register-form" method="post" enctype="multipart/form-data" action="save-admin-details?${_csrf.parameterName}=${_csrf.token}">
 							<div class="form-body">
 								<h4 class="form-section"><i class="icon-head"></i> Admin Info</h4>
 								<div class="row">
@@ -190,7 +190,6 @@ textarea.parsley-error:focus {
 								</div>
 								</div>
 								</div>
-								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" id="csrf"/>	
 								<div class="form-actions">
 								<button type="button" class="btn btn-warning mr-1">
 									<i class="icon-cross2"></i> Cancel
@@ -200,7 +199,8 @@ textarea.parsley-error:focus {
 								</button>
 								</div>
 							</div>
-							</form>	
+							</form>
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" id="csrf"/>	
 					</div>
 				</div>
 			</div>
@@ -259,8 +259,11 @@ window.Parsley.addValidator('checkemail',{
 			data : JSON.stringify({'emailId': $('#emailId').val() }),
 			async: false,
 			success: function(data)	{
-				if(data.emailExists === true)	{
+				if(data.emailExists == true)	{
 					emailResult = false;
+				}
+				else	{
+					emailResult = true;
 				}
 			}
 		});
@@ -281,12 +284,15 @@ window.Parsley.addValidator('checkuname',{
 			data : JSON.stringify({'userName': $('#userName').val() }),
 			async: false,
 			success: function(data)	{
-				if(data.userNameExists === true)	{
+				if(data.userNameExists == true)	{
 					uNameResult = false;
+				}
+				else	{
+					uNameResult = true;
 				}
 			}
 		});
-		return uNameResult;
+	return uNameResult;
 	},
 	messages: {
 		en: 'An account with this username already exists'

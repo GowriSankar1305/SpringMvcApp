@@ -43,7 +43,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	public MultipartResolver getMultipartResolver()	{
 		CommonsMultipartResolver multiPartResolver = new CommonsMultipartResolver();
 		multiPartResolver.setMaxUploadSize(3145728); //3mb
-		multiPartResolver.setDefaultEncoding("UTF-8");
+		//multiPartResolver.setDefaultEncoding("UTF-8");
 		return multiPartResolver;
 	}
 }

@@ -42,4 +42,9 @@ public class ImageDaoImpl implements ImageDao {
 		return hibernateUtils.loadEntitiesBsdOnSearchCriteria(Image.class, columns);
 	}
 
+	@Override
+	public Image getImageByAdminId(long adminId) {
+		return hibernateUtils.findEntityByUniqueProperty(Image.class, "adminId", adminId);
+	}
+
 }

@@ -18,7 +18,9 @@ import org.springframework.stereotype.Component;
 
 import com.tectoro.mvc.dao.AdminDao;
 import com.tectoro.mvc.dao.CustomerDao;
+import com.tectoro.mvc.dao.ImageDao;
 import com.tectoro.mvc.dao.SuperAdminDao;
+import com.tectoro.mvc.entity.Image;
 import com.tectoro.mvc.enums.RoleEnum;
 
 @Component
@@ -32,6 +34,8 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 	private AdminDao adminDao;
 	@Autowired
 	private CustomerDao customerDao;
+	@Autowired
+	private ImageDao imageDao;
 	
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -45,7 +49,12 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		userName = user.getUsername();
 		logger.info("------------------> roleName {} , userName {}",roleName,userName);
 		if(roleName.equals(RoleEnum.ROLE_ADMIN.name()))	{
+			String imageName = "avatar1.png";
 			loggedInUserId = adminDao.getAdminByUserName(userName).getAdminId();
+			Image image = imageDao.getImageByAdminId(loggedInUserId);
+			if(null != image)
+				imageName = image.getGeneratedFileName();
+			httpSession.setAttribute("adminImage", imageName);
 			redirectUrl = "/admin/home";
 		}
 		else if(roleName.equals(RoleEnum.ROLE_SUPERADMIN.name()))	{

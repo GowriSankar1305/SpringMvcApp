@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 @Component
 @SuppressWarnings("all")
@@ -196,5 +197,21 @@ public class HibernateUtils {
 			closeSession();
 		}
 		return list;
+	}
+	
+	public <T> List<T> loadEntitiesByPagination(int pageSize)	{
+		return null;
+	}
+	
+	public Integer getEntityCount(Class clazz)	{
+		int count = 0;
+		try(Session session = getSession())	{
+			Criteria criteria = session.createCriteria(clazz);
+			List<Object> list = criteria.list();
+			if(!CollectionUtils.isEmpty(list))	{
+				return list.size();
+			}
+		}
+		return count;
 	}
 }

@@ -9,4 +9,5 @@ public interface ImageDao {
 	public Image getImageById(Long imageId);
 	public List<Image> getHotelImagesById(Long hotelId);
 	public List<Image> getRoomImagesById(Long roomId);
+	public Image getImageByAdminId(long adminId);
 }

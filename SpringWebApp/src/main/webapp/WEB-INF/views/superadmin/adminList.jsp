@@ -240,6 +240,9 @@
                                 <th>Email</th>
                                 <th>Mobile Number</th>
                                 <th>Gender</th>
+                                <th>Age</th>
+                                <th>Status</th>
+                                <th>Date Of Birth</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -251,6 +254,16 @@
                                 <td>${admin.emailId }</td>
                                 <td>${admin.mobileNumber }</td>
                                 <td>${admin.gender }</td>
+                                <td>${admin.age }</td>
+                                <c:choose>
+                                <c:when test="${admin.isActiveUser eq 1}">
+                                <td><div class="tag tag-success">Active</div> </td>
+                                </c:when>
+                                <c:otherwise>
+                                <td><div class="tag tag-danger">InActive</div> </td>
+                                </c:otherwise>
+                                </c:choose>
+                                <td>${admin.dateOfBirth }</td>
                             </tr>
                         	</c:forEach>
                         </tbody>

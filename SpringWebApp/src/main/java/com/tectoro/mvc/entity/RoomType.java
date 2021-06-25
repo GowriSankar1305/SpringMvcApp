@@ -12,8 +12,8 @@ import javax.persistence.Table;
 public class RoomType {
 	
 	@Id
-	@Column(name = "room_type_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "room_type_id")
 	private Integer roomTypeId;
 	@Column(name = "room_type_name")
 	private String roomTypeName;

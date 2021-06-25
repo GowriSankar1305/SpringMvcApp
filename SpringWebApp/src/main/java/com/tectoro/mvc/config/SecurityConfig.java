@@ -16,7 +16,7 @@ import com.tectoro.mvc.enums.RoleEnum;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	private static final String[] ALLOWED_URLS = {"/","/login/","/login","/resources/**"};
+	private static final String[] ALLOWED_URLS = {"/","/login/","/login","/resources/**","/api/**"};
 
 	@Autowired
 	private CustomUserDetailsService userDetailsService;

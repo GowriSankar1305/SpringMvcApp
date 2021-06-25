@@ -10,3 +10,4 @@
 <script src="resources/js/app-menu.js" type="text/javascript"></script>
 <script src="resources/js/parsley.min.js" type="text/javascript"></script>
 <script src="resources/js/app.js" type="text/javascript"></script>
+<script src="resources/js/custom-selectbox.js" type="text/javascript"></script>
